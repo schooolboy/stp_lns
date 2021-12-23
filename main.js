@@ -3,8 +3,24 @@ var fs = require('fs');
 var mustache = require('mustache');
 const port = 3000;
 var val = -1;
+var aj = 1;
 
 http.createServer(function(req, res){
+	if (req.url == '/turnir_table_a.html') {
+		var num;
+		if (aj == 1) {
+			num = Number(fs.readFileSync(__dirname + '\\score1.txt', 'utf8'));
+		}
+		else {
+			num = Number(fs.readFileSync(__dirname + '\\score2.txt', 'utf8'));
+		}
+		res.write(String(num));
+		aj++;
+		if (aj == 3) {
+			aj = 1;
+		}
+		res.end();
+	}
 	if(req.url == '/turnir_table_r.html') {
 		res.setHeader("Content-Type", "text/html");
 		var data = fs.readFileSync(__dirname + '\\turnir_table.html', 'utf8');
