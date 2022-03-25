@@ -8,7 +8,7 @@ public class Main {
         int move;
         MyFuncs work = new MyFuncs();
         while(true) {
-            work.ShowMenu();
+            work.showMenu();
             move = in.nextInt();
             switch (move) {
                 case 1:

@@ -11,7 +11,7 @@ public class MyFuncs {
         in = new Scanner(System.in);
         fl = new FileWork("t1.txt", "t2.txt");
     }
-    void ShowMenu (){
+    void showMenu (){
         System.out.println("1. Создать");
         System.out.println("2. Просмотреть");
         System.out.println("3. Отредактировать");
