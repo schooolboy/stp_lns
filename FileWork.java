@@ -10,8 +10,8 @@ public class FileWork {
     String name1, name2;
     File fNames, fStats;
     FileReader reader1, reader2;
-    FileWriter n_writer;
-    FileWriter st_writer;
+    FileWriter nWriter;
+    FileWriter stWriter;
     FileWork(String name1, String name2) throws Exception{
         in = new Scanner(System.in);
         fNames = new File(name1);
@@ -31,16 +31,16 @@ public class FileWork {
     boolean Read(int N) throws Exception{
         reader1 = new FileReader(fNames);
         reader2 = new FileReader(fStats);
-        BufferedReader f_reader1 = new BufferedReader(reader1);
-        BufferedReader f_reader2 = new BufferedReader(reader2);
+        BufferedReader fReader1 = new BufferedReader(reader1);
+        BufferedReader fReader2 = new BufferedReader(reader2);
         String str1, str2;
         for (int i = 0; i < N; i++) {
-            str1 = f_reader1.readLine();
-            str2 = f_reader2.readLine();
+            str1 = fReader1.readLine();
+            str2 = fReader2.readLine();
             System.out.println(str1 + ":  " + str2);
         }
-        f_reader1.close();
-        f_reader2.close();
+        fReader1.close();
+        fReader2.close();
         reader1.close();
         reader2.close();
         return true;
@@ -52,21 +52,21 @@ public class FileWork {
             fNames.createNewFile();
             fStats.createNewFile();
         }
-        n_writer = new FileWriter(fNames, true);
-        st_writer = new FileWriter(fStats, true);
+        nWriter = new FileWriter(fNames, true);
+        stWriter = new FileWriter(fStats, true);
         int wins, loses, stays;
         String str;
         for (int i = 0; i < n; i++) {
             System.out.print("Имя команды: ");
             str = in.next();
-            n_writer.write(str + '\n');
+            nWriter.write(str + '\n');
             System.out.print("Победы: ");
             while (true) {
                 wins = in.nextInt();
                 if (wins < 0 || wins > ((n - 1) * k)) {
                     System.out.println("Значение невозможно, введите другое: ");
                 } else {
-                    st_writer.write(wins + " ");
+                    stWriter.write(wins + " ");
                     break;
                 }
             }
@@ -76,26 +76,26 @@ public class FileWork {
                 if (loses < 0 || loses > ((n - 1) * k - wins)) {
                     System.out.print("Значение невозможно, введите другое: ");
                 } else {
-                    st_writer.write(loses + " ");
+                    stWriter.write(loses + " ");
                     break;
                 }
             }
             // ввод ничья
             stays = ((n - 1) * k - wins - loses);
-            st_writer.write(stays + "\n");
+            stWriter.write(stays + "\n");
         }
-        n_writer.close();
-        st_writer.close();
+        nWriter.close();
+        stWriter.close();
         return true;
     }
     boolean Redact (int n, int k) throws Exception{
         int num, wins, loses, stays;
-        int [][]stats_arr = new int[n][3];
+        int [][]statsArr = new int[n][3];
         String name;
-        String []str_arr = new String[n];
+        String []strArr = new String[n];
         Scanner scanner = new Scanner(fStats);
         reader1 = new FileReader(fNames);
-        BufferedReader f_reader1 = new BufferedReader(reader1);
+        BufferedReader fReader1 = new BufferedReader(reader1);
         System.out.print("Номер команды: ");
         num = in.nextInt();
         while (true) {
@@ -106,20 +106,20 @@ public class FileWork {
         }
         for (int i = 0; i < n; i++) {
             for (int j = 0; j < 3; j++) {
-                stats_arr[i][j] = scanner.nextInt();
+                statsArr[i][j] = scanner.nextInt();
             }
-            str_arr[i] = f_reader1.readLine();
+            strArr[i] = fReader1.readLine();
         }
         System.out.print("Новое имя: ");
         name = in.next();
-        str_arr[num-1] = name;
+        strArr[num-1] = name;
         System.out.print("Победы: ");
         while (true) {
             wins = in.nextInt();
             if (wins < 0 || wins > ((n - 1) * k)) {
                 System.out.print("Значение невозможно, введите другое: ");
             } else {
-                stats_arr[num-1][0] = wins;
+                statsArr[num-1][0] = wins;
                 break;
             }
         }
@@ -129,25 +129,25 @@ public class FileWork {
             if (loses < 0 || loses > ((n - 1) * k - wins)) {
                 System.out.print("Значение невозможно, введите другое: ");
             } else {
-                stats_arr[num-1][1] = loses;
+                statsArr[num-1][1] = loses;
                 break;
             }
         }
         // ввод ничья
         stays = ((n - 1) * k - wins - loses);
-        stats_arr[num-1][2] = stays;
-        f_reader1.close(); reader1.close();
+        statsArr[num-1][2] = stays;
+        fReader1.close(); reader1.close();
         scanner.close(); fStats.delete();fNames.delete();
         fNames = new File(name1);
         fStats = new File(name2);
-        n_writer = new FileWriter(fNames, true); // информация записывается в конец файла
-        st_writer = new FileWriter(fStats, true);
+        nWriter = new FileWriter(fNames, true); // информация записывается в конец файла
+        stWriter = new FileWriter(fStats, true);
         for (int i = 0; i < n; i++) {
-            n_writer.write(str_arr[i] + '\n');
-            st_writer.write(String.valueOf(stats_arr[i][0]) + " " + String.valueOf(stats_arr[i][1])+ " " + String.valueOf(stats_arr[i][2]) + '\n');
+            nWriter.write(strArr[i] + '\n');
+            stWriter.write(String.valueOf(statsArr[i][0]) + " " + String.valueOf(statsArr[i][1])+ " " + String.valueOf(statsArr[i][2]) + '\n');
         }
-        n_writer.close();
-        st_writer.close();
+        nWriter.close();
+        stWriter.close();
         return true;
     }
 }
