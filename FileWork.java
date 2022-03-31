@@ -28,13 +28,13 @@ public class FileWork {
         this.name2 = name2;
     }
     // чтение для вывода
-    boolean Read(int N) throws Exception{
+    boolean Read(int n) throws Exception{
         reader1 = new FileReader(fNames);
         reader2 = new FileReader(fStats);
         BufferedReader fReader1 = new BufferedReader(reader1);
         BufferedReader fReader2 = new BufferedReader(reader2);
         String str1, str2;
-        for (int i = 0; i < N; i++) {
+        for (int i = 0; i < n; i++) {
             str1 = fReader1.readLine();
             str2 = fReader2.readLine();
             System.out.println(str1 + ":  " + str2);
