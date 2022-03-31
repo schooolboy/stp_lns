@@ -18,7 +18,7 @@ public class MyFuncs {
         System.out.println("4. Выход");
     }
     // создать
-    boolean CreateR() throws Exception{
+    boolean createR() throws Exception{
         cause++;
         System.out.println("Число участников: ");
         while(true) {
@@ -33,18 +33,18 @@ public class MyFuncs {
         // K - число кругов
         k = (int) (Math.log(n) / Math.log(2.0));
         System.out.println("K:" + k);
-        fl.Write(n, k, cause);
+        fl.write(n, k, cause);
         return true;
     }
     // просмотреть
-    boolean LookR ()throws Exception{
+    boolean lookR ()throws Exception{
         System.out.println("Команда победы поражения ничьи");
-        fl.Read(n);
+        fl.read(n);
         return true;
     }
     // отредактировать
-    boolean RedactR () throws Exception{
-        fl.Redact(n, k);
+    boolean redactR () throws Exception{
+        fl.redact(n, k);
         return true;
     }
 }
