@@ -13,21 +13,21 @@ public class Main {
             switch (move) {
                 case 1:
                     res = true;
-                    work.CreateR(); // создаем
+                    work.createR(); // создаем
                     break;
                 case 2:
                     if (res == false) {
                         System.out.println("Сначала нужно создать результат");
                         break;
                     }
-                    work.LookR(); // промастриваем
+                    work.lookR(); // промастриваем
                     break;
                 case 3:
                     if (res == false) {
                         System.out.println("Сначала нужно создать результат");
                         break;
                     }
-                    work.RedactR();
+                    work.redactR();
                     break;
                 case 4:
                     return;

@@ -28,7 +28,7 @@ public class FileWork {
         this.name2 = name2;
     }
     // чтение для вывода
-    boolean Read(int n) throws Exception{
+    boolean read(int n) throws Exception{
         reader1 = new FileReader(fNames);
         reader2 = new FileReader(fStats);
         BufferedReader fReader1 = new BufferedReader(reader1);
@@ -45,7 +45,7 @@ public class FileWork {
         reader2.close();
         return true;
     }
-    boolean Write(int n, int k, int cause) throws Exception{
+    boolean write(int n, int k, int cause) throws Exception{
         if (cause > 1) {
             fNames.delete();
             fStats.delete();
@@ -88,7 +88,7 @@ public class FileWork {
         stWriter.close();
         return true;
     }
-    boolean Redact (int n, int k) throws Exception{
+    boolean redact (int n, int k) throws Exception{
         int num, wins, loses, stays;
         int [][]statsArr = new int[n][3];
         String name;
