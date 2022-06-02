@@ -1,11 +1,11 @@
-package com.nikita.dem;
+package com.example.demo;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.nikita.dem"})
+@ComponentScan(basePackages = {"com.example.demo"})
 public class TableSprApplication {
 
 	public static void main(String[] args) {
